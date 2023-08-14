@@ -1,0 +1,32 @@
+.home-page {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  @media screen and (min-width: $desktop-breakpoint) {
+    height: 100vh;
+  }
+}
+
+.home-page h1 {
+  line-height: 1;
+  color: $light-blue;
+  font-size: $xxl-size;
+}
+
+.home-page p {
+  line-height: 1;
+  font-style: italic;
+  margin-bottom: $xxl-size;
+}
+
+.home-page button {
+  background-color: $light-blue;
+  color: $white;
+  font-size: $l-size;
+  padding: $xs-size $xxl-size;
+  box-shadow: 0 $xxs-size 0.25em black;
+}

@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import './styles/styles.scss';
-// import { AppRouter } from './routers/AppRouter';
+import './styles/styles.scss';
+import AppRouter from './routers/AppRouter';
 // import { Provider } from 'react-redux';
 // import { store } from './store/configureStore';
 
 const App: React.FC = () => {
-  return <h1>Hello, World!</h1>;
+  return <AppRouter />;
 };
 
 const div = document.getElementById('root')!;

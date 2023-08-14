@@ -1,0 +1,12 @@
+.content-container {
+  margin: 0 auto;
+  padding: $l-size 0;
+  max-width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  @media screen and (min-width: $desktop-breakpoint) {
+    max-width: 80%;
+  }
+}
