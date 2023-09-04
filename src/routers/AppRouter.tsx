@@ -10,17 +10,19 @@ import {
   useNavigate,
   Outlet,
 } from 'react-router-dom';
-import HomePage from '../components/HomePage';
-import Footer from '../components/Footer';
+import HomePage from '../pages/HomePage';
+import SelectPage from '../pages/SelectPage';
 
 const AppRouter: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <React.StrictMode>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/quizes' element={<SelectPage />} />
+        </Routes>
+      </BrowserRouter>
+    </React.StrictMode>
   );
 };
 

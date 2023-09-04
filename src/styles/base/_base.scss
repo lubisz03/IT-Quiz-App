@@ -1,56 +1,39 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
+*,
+*::after,
+*::before {
   margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
 
 html {
-  font-size: 62.5%;
-  overflow-x: hidden;
+  box-sizing: border-box;
+  font-size: 62.5%; //1rem = 10px
+
+  @include respond(tab-land) {
+    font-size: 56.25%; //1rem = 9rem
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%; //1rem = 8px
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; //1rem = 12px
+  }
 }
 
 body {
-  background-color: $dark-blue;
-  color: $white;
-  font-size: $m-size;
-  line-height: 1.6;
-  width: 100%;
-  font-family: 'Cabin', sans-serif;
-}
+  padding: 1rem;
+  background-color: $light-blue;
+  box-sizing: border-box;
+  font-family: 'Roboto', 'sans-serfi';
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.5rem;
+  color: $light-blue;
 
-#root {
-  font-family: 'Cabin', sans-serif;
-}
-
-button {
-  cursor: pointer;
-  font-family: 'Cabin', sans-serif;
-  border: none;
-  outline: none;
-  border-radius: 1em;
-  transition: all 0.25s;
-}
-
-button:disabled {
-  cursor: default;
-}
-
-button:hover {
-  transform: scale(1.05);
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-h1,
-h2,
-h3,
-h4,
-p {
-  margin: 0;
-  padding: 0;
-  height: fit-content;
-  width: fit-content;
+  @include respond(tab-port) {
+    padding: 0;
+  }
 }

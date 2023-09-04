@@ -1,0 +1,21 @@
+.home-page {
+  height: calc(100vh - 2rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 20rem),
+    calc(100% - 20rem) 100%,
+    0 100%
+  );
+
+  &__heading-container {
+    text-align: center;
+    z-index: 100;
+  }
+}
