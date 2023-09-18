@@ -12,6 +12,7 @@ import {
 } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import SelectPage from '../pages/SelectPage';
+import QuizPage from '../pages/QuizPage';
 
 const AppRouter: React.FC = () => {
   return (
@@ -19,7 +20,8 @@ const AppRouter: React.FC = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='/quizes' element={<SelectPage />} />
+          <Route path='/categories' element={<SelectPage />} />
+          <Route path='/quiz' element={<QuizPage />} />
         </Routes>
       </BrowserRouter>
     </React.StrictMode>

@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const dotenv = require('dotenv');
+const { JsxEmit } = require('typescript');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -48,6 +49,8 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.API_URL': JSON.stringify(process.env.API_URL),
+      'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
     }),
   ],
   resolve: {

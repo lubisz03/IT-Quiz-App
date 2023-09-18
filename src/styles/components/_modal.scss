@@ -1,0 +1,28 @@
+.modal {
+  z-index: 9999;
+  background-color: rgba($black, 0.8);
+
+  &-content {
+    background-color: $dark-blue;
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+  }
+
+  &-title {
+    color: $white;
+    font-size: $font-size-s;
+    text-transform: capitalize;
+    font-weight: 400;
+    border-bottom: 3px solid $white;
+    letter-spacing: 0.1rem;
+  }
+
+  &-header,
+  &-footer {
+    border: none;
+  }
+
+  &-body {
+    padding-top: 1rem;
+  }
+}

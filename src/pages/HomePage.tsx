@@ -30,7 +30,7 @@ const HomePage: React.FC = () => {
           Test your knowledge now
         </motion.h4>
       </div>
-      <NavLink to='/quizes'>
+      <NavLink to='/categories'>
         <button className='btn btn--blue'>Start</button>
       </NavLink>
     </section>

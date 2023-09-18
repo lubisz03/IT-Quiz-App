@@ -4,11 +4,11 @@
   &:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1rem 4rem;
+    padding: 0.75rem 4rem;
     border-radius: 3px;
     box-shadow: 0 1rem 1rem rgba($black, 0.8);
     transition: all 0.2s;
-    font-size: $font-size-s;
+    font-size: $font-size-m;
     font-family: 'Roboto';
     cursor: pointer;
     border: none;
@@ -20,15 +20,18 @@
     box-shadow: 0 1rem 2rem rgba($black, 0.8);
   }
 
-  &:active,
-  &:focus {
-    outline: none;
-    transform: translateY(-1px);
-    box-shadow: 0 1rem 0.75rem rgba($black, 0.8);
-  }
+  // &:active,
+  // &:focus {
+  //   outline: none;
+  //   transform: translateY(-1px);
+  //   box-shadow: 0 1rem 0.75rem rgba($black, 0.8);
+  //   color: inherit;
+  // }
 
   &--blue {
     color: $dark-blue;
+    letter-spacing: 0.3rem;
+    font-weight: 500;
     backface-visibility: hidden;
     background-image: linear-gradient(
       to right,
@@ -41,7 +44,54 @@
 
     &:hover {
       background-position: 100%;
+      color: $dark-blue;
       transform: translate(1rem, -1rem) scale(1.05);
+    }
+
+    &:active,
+    &:focus {
+      outline: none;
+      transform: translateY(-1px);
+      box-shadow: 0 1rem 0.75rem rgba($black, 0.8);
+      color: $dark-blue;
+    }
+
+    &--start {
+      font-weight: 600;
+      letter-spacing: 0.1rem;
+      font-size: $font-size-s;
+      padding: 0.5rem 2rem;
+      color: $dark-blue;
+      box-shadow: 0 0.75rem 0.75rem rgba($black, 0.8);
+
+      &:hover {
+        transform: translateY(-4px) translateX(0) scale(1);
+        box-shadow: 0 0.75rem 1.5rem rgba($black, 0.8);
+      }
+
+      &:active,
+      &:focus {
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 0.75rem 0.5rem rgba($black, 0.8);
+        color: $dark-blue;
+      }
+    }
+  }
+
+  &--close {
+    font-weight: 500;
+    font-size: $font-size-m;
+    padding: 0;
+    background-color: transparent;
+    color: $light-blue;
+    text-align: center;
+    box-shadow: none;
+    border-radius: 0;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: none;
     }
   }
 }

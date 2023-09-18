@@ -1,5 +1,42 @@
 .card {
-  height: 20rem;
-  background-color: white;
-  border: 1px solid red;
+  background-color: transparent;
+  position: relative;
+  border: none;
+  height: 30rem;
+  border-radius: 3px;
+  overflow: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1rem rgba($black, 0.8);
+
+  &__img {
+    top: 0;
+    right: 0;
+    position: absolute;
+    height: 100%;
+    border: none;
+    z-index: 1000;
+  }
+
+  &__body {
+    @include absCenter;
+    z-index: 1500;
+  }
+
+  &__overlay {
+    top: 0;
+    right: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba($dark-blue, 0.7);
+    z-index: 1001;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 1rem 2rem rgba($black, 0.8);
+  }
 }
+
+// Improve
