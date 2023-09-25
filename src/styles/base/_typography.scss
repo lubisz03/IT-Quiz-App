@@ -7,19 +7,35 @@
   &__main {
     text-align: center;
     line-height: normal;
-    font-size: $font-size-xl;
-    font-weight: 400;
-    letter-spacing: 2rem;
     color: $light-blue;
+
+    &-letter {
+      display: inline-block;
+      font-size: $font-size-xl;
+      font-weight: 400;
+      text-align: center;
+
+      &:not(:last-of-type) {
+        margin-right: 2rem;
+      }
+    }
   }
 
   &__sub {
     text-align: center;
     line-height: normal;
-    font-size: $font-size-xs;
-    font-weight: 700;
-    letter-spacing: 1rem;
     color: $white;
+
+    &-letter {
+      display: inline-block;
+      font-size: $font-size-xs;
+      font-weight: 700;
+      text-align: center;
+
+      &:not(:last-of-type) {
+        margin-right: 1rem;
+      }
+    }
   }
 }
 
@@ -28,6 +44,7 @@
   padding: 1rem 5rem;
   display: inline-block;
   backface-visibility: hidden;
+  text-align: center;
 
   &__main {
     color: $light-blue;
@@ -44,7 +61,7 @@
   &__sub {
     text-align: center;
     line-height: normal;
-    font-size: $font-size-xs;
+    font-size: $font-size-s;
     font-weight: 700;
     letter-spacing: 0.2rem;
     color: $white;
@@ -52,7 +69,7 @@
 }
 
 .heading-tertiary {
-  display: inline-block;
+  display: block;
   text-transform: uppercase;
   text-align: center;
   line-height: normal;

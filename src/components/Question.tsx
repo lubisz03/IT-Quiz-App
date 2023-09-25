@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect, ConnectedProps } from 'react-redux';
+import { SetAnswer, SetAnswerAction } from '../actions/actions';
 
 interface PropsType {
   question: {
@@ -11,34 +13,85 @@ interface PropsType {
       answer_d: string;
     };
   };
+  SetAnswer: typeof SetAnswer;
 }
 
-const Question: React.FC<PropsType> = ({ question }) => {
+const Question: React.FC<PropsType> = ({ question, SetAnswer }) => {
   return (
     <div className='question'>
-      <h3 className='question__content'>{question.question}</h3>
+      <h3 className='question__content heading-tertiary'>
+        {question.question}
+      </h3>
       <form className='question__answs'>
         <div className='question__answ-group'>
-          <input type='radio' name='answ' id='answ_a' />
-          <label htmlFor='answ_a'>{question.answers.answer_a}</label>
+          <input type='radio' name='answ' id={`answ_a_${question.id}`} />
+          <label
+            htmlFor={`answ_a_${question.id}`}
+            onClick={() =>
+              SetAnswer({
+                questId: question.id,
+                answer: 'answer_a',
+              })
+            }>
+            {question.answers.answer_a}
+          </label>
         </div>
         <div className='question__answ-group'>
-          <input type='radio' name='answ' id='answ_b' />
-          <label htmlFor='answ_b'>{question.answers.answer_b}</label>
+          <input type='radio' name='answ' id={`answ_b_${question.id}`} />
+          <label
+            htmlFor={`answ_b_${question.id}`}
+            onClick={() =>
+              SetAnswer({
+                questId: question.id,
+                answer: 'answer_b',
+              })
+            }>
+            {question.answers.answer_b}
+          </label>
         </div>
 
-        <div className='question__answ-group'>
-          <input type='radio' name='answ' id='answ_c' />
-          <label htmlFor='answ_c'>{question.answers.answer_c}</label>
-        </div>
+        {question.answers.answer_c && (
+          <div className='question__answ-group'>
+            <input type='radio' name='answ' id={`answ_c_${question.id}`} />
+            <label
+              htmlFor={`answ_c_${question.id}`}
+              onClick={() =>
+                SetAnswer({
+                  questId: question.id,
+                  answer: 'answer_c',
+                })
+              }>
+              {question.answers.answer_c}
+            </label>
+          </div>
+        )}
 
-        <div className='question__answ-group'>
-          <input type='radio' name='answ' id='answ_d' />
-          <label htmlFor='answ_d'>{question.answers.answer_d}</label>
-        </div>
+        {question.answers.answer_d && (
+          <div className='question__answ-group'>
+            <input type='radio' name='answ' id={`answ_d_${question.id}`} />
+            <label
+              htmlFor={`answ_d_${question.id}`}
+              onClick={() =>
+                SetAnswer({
+                  questId: question.id,
+                  answer: 'answer_d',
+                })
+              }>
+              {question.answers.answer_d}
+            </label>
+          </div>
+        )}
       </form>
     </div>
   );
 };
 
-export default Question;
+const mapStateToProps = (state: {}) => {
+  return {};
+};
+
+const connector = connect(mapStateToProps, {
+  SetAnswer,
+});
+
+export default connector(Question);

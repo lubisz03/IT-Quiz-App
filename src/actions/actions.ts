@@ -4,6 +4,8 @@ import {
   SET_NUM_OF_QUEST,
   SET_QUESTIONS,
   REMOVE_QUESTIONS,
+  SET_ANSWER,
+  CLEAR_ANSWERS,
 } from './actionTypes';
 
 export interface SetDifficultyAction {
@@ -48,6 +50,18 @@ export interface SetQuestionsAction {
 
 export interface RemoveQuestionsAction {
   type: typeof REMOVE_QUESTIONS;
+}
+
+export interface SetAnswerAction {
+  type: typeof SET_ANSWER;
+  data: {
+    questId: number;
+    answer: string;
+  };
+}
+
+export interface ClearAnswersAction {
+  type: typeof CLEAR_ANSWERS;
 }
 
 export const SetDifficulty = (data: {
@@ -105,5 +119,21 @@ export const SetQuestions = (
 export const RemoveQuestions = (): RemoveQuestionsAction => {
   return {
     type: REMOVE_QUESTIONS,
+  };
+};
+
+export const SetAnswer = (data: {
+  questId: number;
+  answer: string;
+}): SetAnswerAction => {
+  return {
+    type: SET_ANSWER,
+    data,
+  };
+};
+
+export const ClearAnswers = (): ClearAnswersAction => {
+  return {
+    type: CLEAR_ANSWERS,
   };
 };

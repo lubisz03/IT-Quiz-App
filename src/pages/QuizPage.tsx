@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { connect, ConnectedProps } from 'react-redux';
 import { SetQuestions, SetQuestionsAction } from '../actions/actions';
 import { Carousel } from 'react-bootstrap';
@@ -22,12 +23,17 @@ interface PropsType {
     };
     correct_answer: string;
   }[];
+  answers: {
+    questId: number;
+    answer: string;
+  }[];
   SetQuestions: typeof SetQuestions;
 }
 
 const QuizPage: React.FC<PropsType> = ({
   quizSettings,
   questions,
+  answers,
   SetQuestions,
 }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -37,17 +43,27 @@ const QuizPage: React.FC<PropsType> = ({
     setIndex(selectedIndex);
   };
 
+  const handlePrev = () => {
+    if (index > 0) {
+      setIndex(index - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (index < questions.length) {
+      setIndex(index + 1);
+    }
+  };
+
   useEffect(() => {
     const URL = `${process.env.API_URL}${process.env.API_KEY}${quizSettings.numberOfQuest}${quizSettings.category}${quizSettings.difficulty}`;
 
     fetch(URL)
       .then((response) => response.json())
       .then((data) => SetQuestions(data))
-      .then(() => setIsLoading(false))
+      .then(() => setTimeout(() => setIsLoading(false), 3000))
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
-
-  // Improve questions data performance
 
   return (
     <section className='quiz-page'>
@@ -68,6 +84,29 @@ const QuizPage: React.FC<PropsType> = ({
               </Carousel.Item>
             ))}
           </Carousel>
+
+          {index != 0 && (
+            <button
+              onClick={handlePrev}
+              disabled={index === 0}
+              className='btn btn--control btn--control-prev'>
+              &#8249;
+            </button>
+          )}
+          {index + 1 <= answers.length &&
+            (index + 1 != questions.length ? (
+              <button
+                onClick={handleNext}
+                className='btn btn--control btn--control-next'>
+                &#8250;
+              </button>
+            ) : (
+              <NavLink to='/result'>
+                <button className='btn btn--control btn--control-end'>
+                  End
+                </button>
+              </NavLink>
+            ))}
         </>
       )}
     </section>
@@ -91,10 +130,15 @@ const mapStateToProps = (state: {
     };
     correct_answer: string;
   }[];
+  answers: {
+    questId: number;
+    answer: string;
+  }[];
 }) => {
   return {
     quizSettings: state.quizSettings,
     questions: state.questions,
+    answers: state.answers,
   };
 };
 

@@ -4,35 +4,22 @@
   &:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 0.75rem 4rem;
+    padding: 1rem 4rem;
     border-radius: 3px;
-    box-shadow: 0 1rem 1rem rgba($black, 0.8);
-    transition: all 0.2s;
+    transition: all 0.4s;
     font-size: $font-size-m;
     font-family: 'Roboto';
     cursor: pointer;
     border: none;
     letter-spacing: inherit;
+    backface-visibility: hidden;
   }
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 1rem 2rem rgba($black, 0.8);
-  }
-
-  // &:active,
-  // &:focus {
-  //   outline: none;
-  //   transform: translateY(-1px);
-  //   box-shadow: 0 1rem 0.75rem rgba($black, 0.8);
-  //   color: inherit;
-  // }
 
   &--blue {
-    color: $dark-blue;
-    letter-spacing: 0.3rem;
+    color: $white;
+    letter-spacing: 0.25rem;
     font-weight: 500;
-    backface-visibility: hidden;
+    font-size: $font-size-s;
     background-image: linear-gradient(
       to right,
       $light-blue 0%,
@@ -40,41 +27,43 @@
       rgba($light-blue, 0.8) 50%
     );
     background-size: 250%;
-    transition: all 0.5s;
+    box-shadow: 0 1rem 1rem rgba($black, 0.8);
 
     &:hover {
       background-position: 100%;
-      color: $dark-blue;
-      transform: translate(1rem, -1rem) scale(1.05);
+      box-shadow: 0 1rem 2rem rgba($black, 0.8);
+      transform: scale(1.05) translateY(-4px);
+      color: $white;
     }
 
     &:active,
     &:focus {
       outline: none;
-      transform: translateY(-1px);
+      transform: translateY(1px);
       box-shadow: 0 1rem 0.75rem rgba($black, 0.8);
-      color: $dark-blue;
+      color: $dark-blue !important;
     }
 
     &--start {
-      font-weight: 600;
-      letter-spacing: 0.1rem;
+      color: $white;
+      font-weight: 500;
+      letter-spacing: 0.15rem;
       font-size: $font-size-s;
       padding: 0.5rem 2rem;
-      color: $dark-blue;
-      box-shadow: 0 0.75rem 0.75rem rgba($black, 0.8);
+      box-shadow: 0 0.75rem 0.5rem rgba($black, 0.8);
 
       &:hover {
-        transform: translateY(-4px) translateX(0) scale(1);
-        box-shadow: 0 0.75rem 1.5rem rgba($black, 0.8);
+        transform: scale(1.05) translateY(-4px);
+        box-shadow: 0 0.75rem 1rem rgba($black, 0.8);
+        color: $white;
       }
 
       &:active,
       &:focus {
         outline: none;
-        transform: translateY(-1px);
-        box-shadow: 0 0.75rem 0.5rem rgba($black, 0.8);
-        color: $dark-blue;
+        transform: translateY(1px);
+        box-shadow: 0 0.75rem 0.3rem rgba($black, 0.8);
+        color: $dark-blue !important;
       }
     }
   }
@@ -92,6 +81,91 @@
     &:hover {
       transform: translateY(-4px);
       box-shadow: none;
+    }
+  }
+
+  &--control {
+    position: absolute;
+    color: $light-blue;
+    font-weight: 600;
+    font-size: $font-size-l;
+    background-image: linear-gradient(
+      to right,
+      $white 0%,
+      $white 50%,
+      rgba($white, 0.8) 50%
+    );
+    background-size: 250%;
+    height: 7rem;
+    padding: 0 5rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &:active,
+    &:focus {
+      outline: none;
+      color: $light-blue !important;
+      background-image: linear-gradient(
+        to right,
+        $white 0%,
+        $white 50%,
+        rgba($white, 0.8) 50%
+      ) !important;
+      background-size: 250%;
+      transform: translateY(-50%);
+    }
+
+    &:hover {
+      color: $light-blue;
+      background-position: 100%;
+    }
+
+    &-prev {
+      top: 50%;
+      left: 10rem;
+      transform: translateY(-50%);
+    }
+
+    &-next,
+    &-end {
+      top: 50%;
+      right: 10rem;
+      transform: translateY(-50%);
+    }
+
+    &-end {
+      font-size: $font-size-m;
+      font-weight: 500;
+      background-image: linear-gradient(
+        to right,
+        $white 0%,
+        $white 50%,
+        rgba(red, 0.8) 50%
+      );
+      color: $light-blue;
+      background-size: 250%;
+
+      &:active,
+      &:focus {
+        outline: none;
+        color: $white !important;
+        background-image: linear-gradient(
+          to right,
+          $white 0%,
+          $white 50%,
+          rgba(red, 0.8) 50%
+        ) !important;
+        background-size: 250%;
+        transform: translateY(-50%);
+      }
+
+      &:hover {
+        background-position: 100%;
+        color: $white;
+      }
     }
   }
 }

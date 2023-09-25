@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { motion } from 'framer-motion';
-
 import codeImg from '../assets/programming.jpg';
 import devopsImg from '../assets/devops.jpg';
 import networkingImg from '../assets/networking.jpg';
@@ -79,51 +78,6 @@ const CardsGrid: React.FC<PropsType> = ({ quizSettings, SetCategory }) => {
     },
   ];
 
-  // Initialize a state to track whether each row should be animated
-  const [animateRows, setAnimateRows] = useState<boolean[]>(
-    cardData.map(() => false)
-  );
-
-  // Create a function to check if an element is in the viewport
-  const isElementInViewport = (el: HTMLElement) => {
-    const rect = el.getBoundingClientRect();
-    return rect.bottom >= 0 && rect.top <= window.innerHeight;
-  };
-
-  // Use the useEffect hook to check initial visibility and add scroll event listener
-  useEffect(() => {
-    const handleScroll = () => {
-      // Loop through each card and check if it's in the viewport
-      cardData.forEach((_, idx) => {
-        const card = document.getElementById(`card-${idx}`);
-        if (card && isElementInViewport(card) && !animateRows[idx]) {
-          setAnimateRows((prev) => {
-            const newAnimateRows = [...prev];
-            newAnimateRows[idx] = true;
-            return newAnimateRows;
-          });
-        }
-      });
-    };
-
-    // Check initial visibility
-    cardData.forEach((_, idx) => {
-      const card = document.getElementById(`card-${idx}`);
-      if (card && isElementInViewport(card) && !animateRows[idx]) {
-        setAnimateRows((prev) => {
-          const newAnimateRows = [...prev];
-          newAnimateRows[idx] = true;
-          return newAnimateRows;
-        });
-      }
-    });
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [animateRows, cardData]);
-
   return (
     <Container>
       <Row xs={1} md={2} lg={3} className='g-5'>
@@ -131,13 +85,10 @@ const CardsGrid: React.FC<PropsType> = ({ quizSettings, SetCategory }) => {
           <Col key={idx}>
             <motion.div
               id={`card-${idx}`}
-              initial={animateRows[idx] ? 'visible' : 'hidden'}
-              animate={animateRows[idx] ? 'visible' : 'hidden'}
-              variants={{
-                visible: { opacity: 1, y: 0 },
-                hidden: { opacity: 0, y: 50 },
-              }}
-              transition={{ duration: 0.3, delay: idx * 0.1 }}>
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ ease: 'easeOut', duration: 1, delay: 0.5 }}>
               <SettingsModal title={data.title}>
                 <Card
                   className='card'

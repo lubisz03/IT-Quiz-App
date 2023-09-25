@@ -3,3 +3,5 @@ export const SET_CATEGORY = 'SET_CATEGORY';
 export const SET_NUM_OF_QUEST = 'SET_NUM_OF_QUEST';
 export const SET_QUESTIONS = 'SET_QUESTIONS';
 export const REMOVE_QUESTIONS = 'REMOVE_QUESTIONS';
+export const SET_ANSWER = 'SET_ANSWER';
+export const CLEAR_ANSWERS = 'CLEAR_ANSWERS';

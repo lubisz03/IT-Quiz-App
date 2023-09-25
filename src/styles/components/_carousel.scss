@@ -6,7 +6,9 @@
   align-items: center;
   flex-direction: column;
 
-  &-indicators {
+  &-indicators,
+  &-control-prev,
+  &-control-next {
     display: none;
   }
 
