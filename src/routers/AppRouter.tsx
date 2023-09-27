@@ -20,10 +20,10 @@ const AppRouter: React.FC = () => {
     <React.StrictMode>
       <BrowserRouter>
         <Routes>
-          <Route path='/xd' element={<HomePage />} />
-          <Route path='/categories' element={<SelectPage />} />
+          <Route path='/h' element={<HomePage />} />
+          <Route path='/' element={<SelectPage />} />
           <Route path='/quiz' element={<QuizPage />} />
-          <Route path='/' element={<ResultPage />} />
+          <Route path='/result' element={<ResultPage />} />
         </Routes>
       </BrowserRouter>
     </React.StrictMode>

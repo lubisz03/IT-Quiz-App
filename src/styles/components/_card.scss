@@ -9,6 +9,14 @@
   cursor: pointer;
   box-shadow: 0 0.5rem 1rem rgba($black, 0.8);
 
+  @include respond(tab-port) {
+    height: 40rem;
+  }
+
+  @include respond(phone) {
+    height: 30rem;
+  }
+
   &__img {
     top: 0;
     right: 0;

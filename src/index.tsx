@@ -12,9 +12,7 @@ const App: React.FC = () => {
 const div = document.getElementById('root')!;
 const root = ReactDOM.createRoot(div);
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <App />
+  </Provider>
 );

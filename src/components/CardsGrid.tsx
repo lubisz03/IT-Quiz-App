@@ -80,7 +80,7 @@ const CardsGrid: React.FC<PropsType> = ({ quizSettings, SetCategory }) => {
 
   return (
     <Container>
-      <Row xs={1} md={2} lg={3} className='g-5'>
+      <Row xs={1} s={2} lg={3} className='g-5'>
         {cardData.map((data, idx) => (
           <Col key={idx}>
             <motion.div

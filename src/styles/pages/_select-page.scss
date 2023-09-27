@@ -6,4 +6,12 @@
   padding: 5rem;
   background-color: $dark-blue;
   position: relative;
+
+  @include respond(tab-port) {
+    padding: 10rem 10rem 5rem 10rem;
+  }
+
+  @include respond(phone) {
+    padding: 10rem 5rem 5rem 5rem;
+  }
 }

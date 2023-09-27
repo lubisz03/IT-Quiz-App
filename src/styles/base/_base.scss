@@ -34,5 +34,6 @@ body {
 
   @include respond(tab-port) {
     padding: 0;
+    background-color: $dark-blue;
   }
 }

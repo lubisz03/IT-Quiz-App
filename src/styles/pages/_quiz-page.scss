@@ -7,4 +7,12 @@
   padding: 5rem;
   background-color: $dark-blue;
   position: relative;
+
+  @include respond(tab-port) {
+    height: 100vh;
+  }
+
+  @include respond(phone) {
+    min-height: 100vh;
+  }
 }

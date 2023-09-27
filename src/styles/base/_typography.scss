@@ -4,6 +4,10 @@
   display: block;
   backface-visibility: hidden;
 
+  @include respond(tab-port) {
+    margin-bottom: 10rem;
+  }
+
   &__main {
     text-align: center;
     line-height: normal;
@@ -17,6 +21,14 @@
 
       &:not(:last-of-type) {
         margin-right: 2rem;
+      }
+
+      @include respond(tab-land) {
+        font-size: $font-size-xxl;
+      }
+
+      @include respond(phone) {
+        font-size: $font-size-xl;
       }
     }
   }
@@ -34,6 +46,16 @@
 
       &:not(:last-of-type) {
         margin-right: 1rem;
+      }
+
+      @include respond(tab-land) {
+        font-size: $font-size-m;
+        font-weight: 400;
+      }
+
+      @include respond(phone) {
+        font-size: $font-size-s;
+        font-weight: 600;
       }
     }
   }
@@ -78,4 +100,57 @@
   letter-spacing: 0.3rem;
   color: $white;
   margin: 0;
+
+  @include respond(tab-port) {
+    font-size: $font-size-l;
+    font-weight: 400;
+  }
+
+  @include respond(tab-port) {
+    font-size: $font-size-m;
+    font-weight: 500;
+  }
+}
+
+.heading-result {
+  background-color: $white;
+  text-align: center;
+  border-radius: 3px;
+  line-height: normal;
+  padding: 10rem 0;
+  box-shadow: 0 1rem 1rem rgba($black, 0.8);
+  border: 1rem solid $light-blue;
+
+  &__icon {
+    height: 10rem;
+    margin-bottom: 5rem;
+
+    @include respond(tab-port) {
+      height: 15rem;
+    }
+  }
+
+  &__main {
+    font-size: $font-size-xl;
+    font-weight: 300;
+    letter-spacing: 0.3rem;
+    margin-bottom: 3rem;
+    font-style: italic;
+
+    @include respond(tab-port) {
+      font-weight: 400;
+    }
+  }
+
+  &__sub {
+    font-size: $font-size-l;
+    color: black;
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+    margin-bottom: 0;
+
+    @include respond(tab-port) {
+      font-weight: 600;
+    }
+  }
 }

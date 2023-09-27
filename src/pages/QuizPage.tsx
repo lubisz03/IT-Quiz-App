@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 import { connect, ConnectedProps } from 'react-redux';
 import { SetQuestions, SetQuestionsAction } from '../actions/actions';
-import { Carousel } from 'react-bootstrap';
-import ProgressBar from 'react-bootstrap/ProgressBar';
+import { Carousel, ProgressBar, Spinner } from 'react-bootstrap';
 import Question from '../components/Question';
+import HomeButton from '../components/HomeButton';
 
 interface PropsType {
   quizSettings: {
@@ -58,16 +59,31 @@ const QuizPage: React.FC<PropsType> = ({
   useEffect(() => {
     const URL = `${process.env.API_URL}${process.env.API_KEY}${quizSettings.numberOfQuest}${quizSettings.category}${quizSettings.difficulty}`;
 
-    fetch(URL)
-      .then((response) => response.json())
-      .then((data) => SetQuestions(data))
-      .then(() => setTimeout(() => setIsLoading(false), 3000))
-      .catch((error) => console.error('Error fetching data:', error));
+    axios
+      .get(URL)
+      .then((response) => {
+        return response.data;
+      })
+      .then((data) => {
+        SetQuestions(data);
+      })
+      .then(() => {
+        setTimeout(() => setIsLoading(false), 3000);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
   }, []);
 
   return (
     <section className='quiz-page'>
-      {!isLoading && (
+      <HomeButton />
+      {isLoading ? (
+        <Spinner
+          animation='border'
+          style={{ width: '10rem', height: '10rem' }}
+        />
+      ) : (
         <>
           <ProgressBar
             now={((index + 1) / questions.length) * 100}
@@ -77,7 +93,8 @@ const QuizPage: React.FC<PropsType> = ({
             activeIndex={index}
             onSelect={handleSelect}
             wrap={false}
-            interval={null}>
+            interval={null}
+            touch={false}>
             {questions.map((quest) => (
               <Carousel.Item key={quest.id}>
                 <Question question={quest} />

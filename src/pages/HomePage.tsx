@@ -13,7 +13,7 @@ const HomePage: React.FC = () => {
   };
 
   const line1 = 'IT QUIZ';
-  const line2 = 'TEST YOUR KNOWLEDGE NOW';
+  const line2 = 'TEST YOUR KNOWLEDGE';
 
   const sentence = {
     hidden: { opacity: 1 },

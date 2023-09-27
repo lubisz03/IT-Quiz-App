@@ -21,6 +21,14 @@
     grid-template-columns: calc(50% - 1rem) calc(50% - 1rem);
     grid-template-rows: calc(50% - 1rem) calc(50% - 1rem);
     gap: 2rem;
+
+    @include respond(tab-port) {
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: column;
+      align-content: center;
+      gap: 2rem;
+    }
   }
 
   &__answ-group {
@@ -50,6 +58,12 @@
       &:hover {
         transform: translateY(-4px);
         box-shadow: 0 0.75rem 1.5rem rgba($black, 0.8);
+      }
+
+      @include respond(tab-port) {
+        font-size: $font-size-m;
+        font-weight: 400;
+        padding: 2.5rem;
       }
     }
 
