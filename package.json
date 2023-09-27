@@ -1,6 +1,7 @@
 {
   "name": "it-quiz-app",
   "version": "1.0.0",
+  "homepage": "https://lubisz03.github.io/IT-Quiz-App/",
   "description": "",
   "main": "index.tsx",
   "scripts": {
@@ -8,7 +9,9 @@
     "server": "npm run build && node server/server.js",
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack --config webpack.dev.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public"
   },
   "author": "Antoni Łubisz",
   "license": "MIT",
@@ -20,6 +23,7 @@
     "@types/redux-thunk": "^2.1.0",
     "css-loader": "^6.8.1",
     "dotenv": "^16.3.1",
+    "gh-pages": "^6.0.0",
     "html-webpack-plugin": "^5.5.3",
     "node-sass": "^9.0.0",
     "sass-loader": "^13.3.2",
