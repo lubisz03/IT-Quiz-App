@@ -27,7 +27,7 @@ The IT Quiz App is a fully responsive web-based quiz application designed to cha
 ## Technologies:
 - HTML5 :white_check_mark:
 - SASS :white_check_mark:
-- React Bootstrap :white_check_mark:
+- Bootstrap :white_check_mark:
 - ReactJS + Redux :white_check_mark:
 - TypeScript :white_check_mark:
 
