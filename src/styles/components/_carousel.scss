@@ -21,12 +21,12 @@
     height: 100%;
 
     @include respond(tab-port) {
-      width: 65%;
+      width: 85%;
     }
   }
 
   &-item {
     height: 100%;
-    padding: 5rem 0;
+    padding-bottom: 2.5rem;
   }
 }

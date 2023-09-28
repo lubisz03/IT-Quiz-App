@@ -1,6 +1,24 @@
+.spinner {
+  height: calc(100vh - 2rem);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  padding: 5rem;
+  background-color: $dark-blue;
+
+  @include respond(tab-port) {
+    height: 100vh;
+  }
+
+  @include respond(phone) {
+    height: -webkit-fill-available;
+  }
+}
+
 .spinner-border {
-  text-align: center;
-  color: $light-blue;
-  display: block;
+  height: 100px;
+  width: 100px;
   margin: 0 auto;
+  color: $light-blue;
 }

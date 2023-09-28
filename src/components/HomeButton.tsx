@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 import { connect, ConnectedProps } from 'react-redux';
 import {
   RemoveQuestions,
@@ -15,17 +15,18 @@ interface PropsType {
 }
 
 const HomeButton: React.FC<PropsType> = ({ RemoveQuestions, ClearAnswers }) => {
+  const navigate = useNavigate();
+
   const handleClick = (): void => {
     RemoveQuestions();
     ClearAnswers();
+    navigate('/');
   };
 
   return (
-    <NavLink to='/' className='btn--home'>
-      <button className='btn btn--home__body' onClick={() => handleClick()}>
-        <AiFillHome />
-      </button>
-    </NavLink>
+    <button className='btn btn--home' onClick={() => handleClick()}>
+      <AiFillHome />
+    </button>
   );
 };
 

@@ -3,9 +3,10 @@ import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { connect, ConnectedProps } from 'react-redux';
 import { SetQuestions, SetQuestionsAction } from '../actions/actions';
-import { Carousel, ProgressBar, Spinner } from 'react-bootstrap';
+import { Carousel, ProgressBar } from 'react-bootstrap';
 import Question from '../components/Question';
 import HomeButton from '../components/HomeButton';
+import SpinnerPage from '../components/SpinnerPage';
 
 interface PropsType {
   quizSettings: {
@@ -16,13 +17,18 @@ interface PropsType {
   questions: {
     id: number;
     question: string;
+    correct_answers: {
+      answer_a_correct: string;
+      answer_b_correct: string;
+      answer_c_correct: string;
+      answer_d_correct: string;
+    };
     answers: {
       answer_a: string;
       answer_b: string;
       answer_c: string;
       answer_d: string;
     };
-    correct_answer: string;
   }[];
   answers: {
     questId: number;
@@ -79,10 +85,7 @@ const QuizPage: React.FC<PropsType> = ({
     <section className='quiz-page'>
       <HomeButton />
       {isLoading ? (
-        <Spinner
-          animation='border'
-          style={{ width: '10rem', height: '10rem' }}
-        />
+        <SpinnerPage />
       ) : (
         <>
           <ProgressBar
@@ -139,13 +142,18 @@ const mapStateToProps = (state: {
   questions: {
     id: number;
     question: string;
+    correct_answers: {
+      answer_a_correct: string;
+      answer_b_correct: string;
+      answer_c_correct: string;
+      answer_d_correct: string;
+    };
     answers: {
       answer_a: string;
       answer_b: string;
       answer_c: string;
       answer_d: string;
     };
-    correct_answer: string;
   }[];
   answers: {
     questId: number;

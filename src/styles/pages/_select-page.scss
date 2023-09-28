@@ -8,7 +8,7 @@
   position: relative;
 
   @include respond(tab-port) {
-    padding: 10rem 10rem 5rem 10rem;
+    padding: 10rem;
   }
 
   @include respond(phone) {

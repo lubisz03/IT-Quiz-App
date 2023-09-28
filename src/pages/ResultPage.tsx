@@ -3,20 +3,19 @@ import great from '../assets/great.svg';
 import ok from '../assets/ok.svg';
 import bad from '../assets/bad.svg';
 import { connect, ConnectedProps } from 'react-redux';
-import { Spinner } from 'react-bootstrap';
+import SpinnerPage from '../components/SpinnerPage';
 import HomeButton from '../components/HomeButton';
 
 interface PropsType {
   questions: {
     id: number;
     question: string;
-    answers: {
-      answer_a: string;
-      answer_b: string;
-      answer_c: string;
-      answer_d: string;
+    correct_answers: {
+      answer_a_correct: string;
+      answer_b_correct: string;
+      answer_c_correct: string;
+      answer_d_correct: string;
     };
-    correct_answer: string;
   }[];
   answers: {
     questId: number;
@@ -28,42 +27,71 @@ const ResultPage: React.FC<PropsType> = ({ questions, answers }) => {
   const initialWrongAnswers: {
     id: number;
     question: string;
-    answers: {
-      answer_a: string;
-      answer_b: string;
-      answer_c: string;
-      answer_d: string;
+    correct_answers: {
+      answer_a_correct: string;
+      answer_b_correct: string;
+      answer_c_correct: string;
+      answer_d_correct: string;
     };
-    correct_answer: string;
   }[] = [];
 
   const [isLoading, setIsLoading] = useState(true);
   const [wrongAnswers, setWrongAnswers] = useState(initialWrongAnswers);
 
-  interface answersProps {
-    answer_a: string;
-    answer_b: string;
-    answer_c: string;
-    answer_d: string;
+  interface answersI {
+    questId: number;
+    answer: string;
   }
 
-  // function findTrueProperty(obj: answersProps): keyof answersProps | null {
-  //   for (const key in obj) {
-  //     if (obj.hasOwnProperty(key) && obj[key] === 'true') {
-  //       return key as keyof answersProps;
-  //     }
-  //   }
-  //   return null; // Return null if no property has a value of 'true'
-  // }
+  interface questionI {
+    id: number;
+    question: string;
+    correct_answers: {
+      answer_a_correct: string;
+      answer_b_correct: string;
+      answer_c_correct: string;
+      answer_d_correct: string;
+    };
+  }
+
+  const isAnswerCorrect = (answerObj: answersI, questionObj: questionI) => {
+    const selectedAnswer = answerObj.answer;
+    const correctAnswers = Object.keys(questionObj.correct_answers).filter(
+      (key) =>
+        (questionObj.correct_answers as Record<string, string>)[key] === 'true'
+    );
+
+    // Check if the selected answer is one of the correct answers
+    return correctAnswers.includes(selectedAnswer);
+  };
 
   useEffect(() => {
-    // questions.forEach((question, index) => {
-    //   if (answers[index].answer !== correctAnsw) {
-    //     setWrongAnswers((prevState) => [...prevState, question]);
-    //   }
-    // });
+    const quest = {
+      id: 443,
+      question: 'What is the HTML Tag for the largest heading',
+      description: null,
+      correct_answers: {
+        answer_a_correct: 'false',
+        answer_b_correct: 'false',
+        answer_c_correct: 'true',
+        answer_d_correct: 'false',
+      },
+    };
 
+    const ans = {
+      questId: 443,
+      answer: 'answer_c_correct',
+    };
+
+    questions.map((question, index) => {
+      if (!isAnswerCorrect(answers[index], question)) {
+        setWrongAnswers((prevState) => [...prevState, question]);
+      }
+    });
+
+    console.log(isAnswerCorrect(ans, quest));
     setTimeout(() => setIsLoading(false), 3000);
+    console.log(wrongAnswers);
   }, []);
 
   const result = (wrongAnswers.length / answers.length) * 100;
@@ -72,10 +100,7 @@ const ResultPage: React.FC<PropsType> = ({ questions, answers }) => {
     <section className='result-page'>
       <HomeButton />
       {isLoading ? (
-        <Spinner
-          animation='border'
-          style={{ width: '10rem', height: '10rem' }}
-        />
+        <SpinnerPage />
       ) : (
         <div className='heading-result result-page__heading'>
           {result < 50 && (
@@ -117,13 +142,12 @@ const mapStateToProps = (state: {
   questions: {
     id: number;
     question: string;
-    answers: {
-      answer_a: string;
-      answer_b: string;
-      answer_c: string;
-      answer_d: string;
+    correct_answers: {
+      answer_a_correct: string;
+      answer_b_correct: string;
+      answer_c_correct: string;
+      answer_d_correct: string;
     };
-    correct_answer: string;
   }[];
   answers: {
     questId: number;

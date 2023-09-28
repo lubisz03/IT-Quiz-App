@@ -1,13 +1,18 @@
 const questionsReducerDefaultState: {
   id: number;
   question: string;
+  correct_answers: {
+    answer_a_correct: string;
+    answer_b_correct: string;
+    answer_c_correct: string;
+    answer_d_correct: string;
+  };
   answers: {
     answer_a: string;
     answer_b: string;
     answer_c: string;
     answer_d: string;
   };
-  correct_answer: string;
 }[] = [];
 
 export const questionsReducer = (
@@ -17,13 +22,18 @@ export const questionsReducer = (
     data: {
       id: number;
       question: string;
+      correct_answers: {
+        answer_a_correct: string;
+        answer_b_correct: string;
+        answer_c_correct: string;
+        answer_d_correct: string;
+      };
       answers: {
         answer_a: string;
         answer_b: string;
         answer_c: string;
         answer_d: string;
       };
-      correct_answer: string;
     }[];
   }
 ) => {

@@ -42,6 +42,10 @@
       &:hover {
         color: $white;
         transform: translateY(-4px);
+
+        @include respond(tab-land) {
+          transform: none;
+        }
       }
 
       @include respond(tab-land) {

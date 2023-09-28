@@ -9,10 +9,12 @@
   position: relative;
 
   @include respond(tab-port) {
-    height: 100vh;
+    padding: 10rem 5rem 5rem 5rem;
   }
 
   @include respond(phone) {
-    min-height: 100vh;
+    height: initial;
+    min-height: -webkit-fill-available;
+    padding: 10rem 5rem 5rem 5rem;
   }
 }

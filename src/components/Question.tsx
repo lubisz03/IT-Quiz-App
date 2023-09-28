@@ -6,6 +6,12 @@ interface PropsType {
   question: {
     id: number;
     question: string;
+    correct_answers: {
+      answer_a_correct: string;
+      answer_b_correct: string;
+      answer_c_correct: string;
+      answer_d_correct: string;
+    };
     answers: {
       answer_a: string;
       answer_b: string;
@@ -30,7 +36,7 @@ const Question: React.FC<PropsType> = ({ question, SetAnswer }) => {
             onClick={() =>
               SetAnswer({
                 questId: question.id,
-                answer: 'answer_a',
+                answer: 'answer_a_correct',
               })
             }>
             {question.answers.answer_a}
@@ -43,7 +49,7 @@ const Question: React.FC<PropsType> = ({ question, SetAnswer }) => {
             onClick={() =>
               SetAnswer({
                 questId: question.id,
-                answer: 'answer_b',
+                answer: 'answer_b_correct',
               })
             }>
             {question.answers.answer_b}
@@ -58,7 +64,7 @@ const Question: React.FC<PropsType> = ({ question, SetAnswer }) => {
               onClick={() =>
                 SetAnswer({
                   questId: question.id,
-                  answer: 'answer_c',
+                  answer: 'answer_c_correct',
                 })
               }>
               {question.answers.answer_c}
@@ -74,7 +80,7 @@ const Question: React.FC<PropsType> = ({ question, SetAnswer }) => {
               onClick={() =>
                 SetAnswer({
                   questId: question.id,
-                  answer: 'answer_d',
+                  answer: 'answer_d_correct',
                 })
               }>
               {question.answers.answer_d}

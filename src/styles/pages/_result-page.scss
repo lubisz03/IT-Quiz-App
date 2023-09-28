@@ -12,8 +12,12 @@
     height: 100vh;
   }
 
+  @include respond(phone) {
+    height: -webkit-fill-available;
+  }
+
   &__heading {
-    @include absCenter;
+    margin: 0 auto;
     width: 30%;
 
     @include respond(tab-land) {

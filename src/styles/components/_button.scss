@@ -19,6 +19,19 @@
     }
   }
 
+  &:hover {
+    @include respond(tab-port) {
+      transform: none !important;
+    }
+  }
+
+  &:active,
+  &:focus {
+    @include respond(tab-port) {
+      transform: none !important;
+    }
+  }
+
   &--blue {
     color: $white;
     letter-spacing: 0.25rem;
@@ -123,6 +136,11 @@
     align-items: center;
     flex-direction: column;
 
+    @include respond(phone) {
+      padding: 0 2.5rem;
+      height: 5rem;
+    }
+
     &:active,
     &:focus {
       outline: none;
@@ -150,6 +168,10 @@
       @include respond(tab-port) {
         left: 2rem;
       }
+
+      @include respond(phone) {
+        left: 1rem;
+      }
     }
 
     &-next,
@@ -160,6 +182,10 @@
 
       @include respond(tab-port) {
         right: 2rem;
+      }
+
+      @include respond(phone) {
+        right: 1rem;
       }
     }
 
@@ -199,27 +225,41 @@
   &--home {
     z-index: 2137;
     position: fixed;
-    top: 1rem;
+    top: 4rem;
     right: 4rem;
-    padding: 0;
+    color: $light-blue;
+    font-size: $font-size-m;
+    padding: 1rem;
+    background-color: $white;
+    border-radius: 50%;
+    border: 0.5rem solid $light-blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
-    &__body {
+    @include respond(phone) {
+      top: 2rem;
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: none;
+      background-color: $white;
+      border-radius: 50%;
+      border: 0.5rem solid $light-blue;
+      padding: 1rem;
+    }
+
+    &:active,
+    &:focus {
+      transform: translateY(0);
+      box-shadow: none;
       color: $light-blue;
-      font-size: $font-size-l;
-      padding: 0;
-
-      &:hover {
-        transform: translateY(-8px);
-        box-shadow: none;
-        color: $white;
-      }
-
-      &:active,
-      &:focus {
-        transform: translateY(-8px);
-        box-shadow: none;
-        color: $white;
-      }
+      background-color: $white;
+      border-radius: 50%;
+      border: 0.5rem solid $light-blue;
+      padding: 1rem;
     }
   }
 }

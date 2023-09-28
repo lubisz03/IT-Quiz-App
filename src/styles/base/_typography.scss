@@ -68,6 +68,10 @@
   backface-visibility: hidden;
   text-align: center;
 
+  @include respond(phone) {
+    padding: 1rem 0rem;
+  }
+
   &__main {
     color: $light-blue;
     text-transform: uppercase;
@@ -124,10 +128,6 @@
   &__icon {
     height: 10rem;
     margin-bottom: 5rem;
-
-    @include respond(tab-port) {
-      height: 15rem;
-    }
   }
 
   &__main {
