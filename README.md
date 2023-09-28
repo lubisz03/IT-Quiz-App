@@ -16,7 +16,7 @@ The IT Quiz App is a fully responsive web-based quiz application designed to cha
 
 ![](/screenshots/quiz-settings.png)
 
-**_Question:_**
+**_Question Page:_**
 
 ![](/screenshots/question.png)
 
